@@ -57,7 +57,7 @@ const LeftNavbar = ({ onSelectChat }) => {
           </Paper>
         </Toolbar>
       </AppBar>
-      {/* {showMenu && (
+      {showMenu && (
         <Box p={2} borderBottom="1px solid #ccc">
           <Avatar alt="User Avatar" src={`https://api.adorable.io/avatars/32/user@example.com`} />
           <Typography variant="subtitle1">User's Name</Typography>
@@ -123,7 +123,7 @@ const LeftNavbar = ({ onSelectChat }) => {
             <ListItemText primary="Telegram Features" />
           </ListItem>
         </List>
-      )} */}
+      )}
       {!showMenu && (
         <List>
           {chats.map(chat => (
