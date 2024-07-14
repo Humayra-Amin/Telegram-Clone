@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <Container maxWidth="xl">
-      <Grid container spacing={1}>
+      {/* <Grid container spacing={1}>
         <Grid item xs={12} lg={3}>
           {(!isSmallScreen || !selectedChat) && (
             <LeftNavbar onSelectChat={handleSelectChat} />
@@ -30,7 +30,7 @@ const App = () => {
             <RightNavbar selectedChat={selectedChat} onBack={handleBack} />
           )}
         </Grid>
-      </Grid>
+      </Grid> */}
     </Container>
   );
 };
