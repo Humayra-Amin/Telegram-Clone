@@ -103,13 +103,13 @@ const LeftNavbar = ({ onSelectChat }) => {
             </IconButton>
             <ListItemText primary="Saved Messages" />
           </ListItem>
-          <Divider />
           <ListItem button>
             <IconButton edge="start" color="inherit">
               <SettingsIcon />
             </IconButton>
             <ListItemText primary="Settings" />
           </ListItem>
+          <Divider />
           <ListItem button>
             <IconButton edge="start" color="inherit">
               <ShareIcon />
