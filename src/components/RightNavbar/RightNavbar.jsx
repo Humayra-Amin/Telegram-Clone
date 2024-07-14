@@ -8,6 +8,7 @@ import SendIcon from '@mui/icons-material/Send';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useMediaQuery, useTheme } from '@mui/material';
+import dayjs from 'dayjs'; // Importing dayjs for date formatting
 
 const RightNavbar = ({ selectedChat, onBack }) => {
   const [messages, setMessages] = useState([]);
@@ -40,6 +41,36 @@ const RightNavbar = ({ selectedChat, onBack }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const renderMessagesWithDateHeaders = (messages) => {
+    let lastDate = null;
+
+    return messages.map((message, index) => {
+      const messageDate = dayjs(message.timestamp).format('MMMM D, YYYY');
+      const showDateHeader = messageDate !== lastDate;
+      lastDate = messageDate;
+
+      return (
+        <React.Fragment key={message.id}>
+          {showDateHeader && (
+            <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+              <Paper sx={{ padding: '2px 10px', backgroundColor: '#e0e0e0' }}>
+                <Typography variant="caption" color="textSecondary">{messageDate}</Typography>
+              </Paper>
+            </Box>
+          )}
+          <Box sx={{ mb: 2, display: 'flex', justifyContent: message.sender_id === 1 ? 'flex-end' : 'flex-start' }}>
+            <Paper sx={{ maxWidth: '80%', p: 2, backgroundColor: message.sender_id === 1 ? '#ffffff' : '#dcedc8' }}>
+              <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap' }}>{message.message}</Typography>
+              {message.sender_id === 1 && (
+                <Typography variant="caption" color="textSecondary">BeyondChat</Typography>
+              )}
+            </Paper>
+          </Box>
+        </React.Fragment>
+      );
+    });
+  };
+
   if (isSmallScreen && !selectedChat) {
     return null;
   }
@@ -70,16 +101,7 @@ const RightNavbar = ({ selectedChat, onBack }) => {
         </Toolbar>
       </AppBar>
       <Box flexGrow={1} sx={{ overflowY: 'auto', padding: 2, backgroundColor: '#8BABD8', position: 'relative' }}>
-        {messages.map(message => (
-          <Box key={message.id} sx={{ mb: 2, display: 'flex', justifyContent: message.sender_id === 1 ? 'flex-end' : 'flex-start' }}>
-            <Paper sx={{ maxWidth: '80%', p: 2, backgroundColor: message.sender_id === 1 ? '#ffffff' : '#dcedc8' }}>
-              <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap' }}>{message.message}</Typography>
-              {message.sender_id === 1 && (
-                <Typography variant="caption" color="textSecondary">BeyondChat</Typography>
-              )}
-            </Paper>
-          </Box>
-        ))}
+        {renderMessagesWithDateHeaders(messages)}
         <div ref={messagesEndRef} />
       </Box>
       <Box sx={{
