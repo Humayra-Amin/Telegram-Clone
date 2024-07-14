@@ -18,19 +18,19 @@ const RightNavbar = ({ selectedChat, onBack }) => {
   useEffect(() => {
     if (!selectedChat || !selectedChat.id) return;
 
-  //   axios.get(`https://devapi.beyondchats.com/api/get_chat_messages?chat_id=${selectedChat.id}`)
-  //     .then(response => {
-  //       const { data } = response.data;
-  //       if (data && Array.isArray(data)) {
-  //         setMessages(data);
-  //       } else {
-  //         console.error('Invalid response structure:', response.data);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching messages:', error);
-  //     });
-  // }, [selectedChat]);
+    axios.get(`https://devapi.beyondchats.com/api/get_chat_messages?chat_id=${selectedChat.id}`)
+      .then(response => {
+        const { data } = response.data;
+        if (data && Array.isArray(data)) {
+          setMessages(data);
+        } else {
+          console.error('Invalid response structure:', response.data);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching messages:', error);
+      });
+  }, [selectedChat]);
 
   useEffect(() => {
     scrollToBottom();
@@ -69,7 +69,7 @@ const RightNavbar = ({ selectedChat, onBack }) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      {/* <Box flexGrow={1} sx={{ overflowY: 'auto', padding: 2, backgroundColor: '#8BABD8', position: 'relative' }}>
+      <Box flexGrow={1} sx={{ overflowY: 'auto', padding: 2, backgroundColor: '#8BABD8', position: 'relative' }}>
         {messages.map(message => (
           <Box key={message.id} sx={{ mb: 2, display: 'flex', justifyContent: message.sender_id === 1 ? 'flex-end' : 'flex-start' }}>
             <Paper sx={{ maxWidth: '80%', p: 2, backgroundColor: message.sender_id === 1 ? '#ffffff' : '#dcedc8' }}>
@@ -81,7 +81,7 @@ const RightNavbar = ({ selectedChat, onBack }) => {
           </Box>
         ))}
         <div ref={messagesEndRef} />
-      </Box> */}
+      </Box>
       <Box sx={{
         position: 'absolute',
         bottom: 0,
