@@ -8,7 +8,7 @@ import SendIcon from '@mui/icons-material/Send';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useMediaQuery, useTheme } from '@mui/material';
-import dayjs from 'dayjs'; // Importing dayjs for date formatting
+import dayjs from 'dayjs';
 
 const RightNavbar = ({ selectedChat, onBack }) => {
   const [messages, setMessages] = useState([]);

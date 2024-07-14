@@ -14,7 +14,7 @@ import ShareIcon from '@mui/icons-material/Share';
 
 const LeftNavbar = ({ onSelectChat }) => {
   const [chats, setChats] = useState([]);
-  const [showMenu, setShowMenu] = useState(false); // State to control menu visibility
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -34,7 +34,7 @@ const LeftNavbar = ({ onSelectChat }) => {
   }, []);
 
   const toggleMenu = () => {
-    setShowMenu(!showMenu); // Toggle menu visibility
+    setShowMenu(!showMenu);
   };
 
   return (
