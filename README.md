@@ -16,13 +16,13 @@ This project is a replica of the Telegram messaging application, built using Rea
 
 ## APIs Used
 
-# API endpoint 1:
+## API endpoint 1:
 
 - Description: Returns list of chats (paginated API)
 - URL: https://devapi.beyondchats.com/api/get_all_chats?page=1
 - Type: GET Request
 
-# API endpoint 2:
+## API endpoint 2:
 
 - Description: Returns list of messages given a chat_id
 - URL: https://devapi.beyondchats.com/api/get_chat_messages?chat_id=3888
